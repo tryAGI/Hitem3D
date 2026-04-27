@@ -1,0 +1,218 @@
+openapi: 3.0.3
+info:
+  title: Hitem3D API
+  description: |
+    API for Hitem3D/Sparc3D image-to-3D and multi-view-to-3D generation.
+
+    This OpenAPI document is manually maintained from the public Hitem3D API
+    reference because Hitem3D does not publish a downloadable OpenAPI document.
+  version: "1.0.0"
+servers:
+  - url: https://api.hitem3d.ai
+security:
+  - BearerAuth: []
+tags:
+  - name: auth
+  - name: tasks
+  - name: account
+paths:
+  /open-api/v1/auth/token:
+    post:
+      operationId: getToken
+      summary: Get an access token
+      tags: [auth]
+      security: []
+      parameters:
+        - name: Authorization
+          in: header
+          required: true
+          description: Basic authentication header containing base64(client_id:client_secret).
+          schema:
+            type: string
+            example: Basic Y2xpZW50X2lkOmNsaWVudF9zZWNyZXQ=
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: false
+      responses:
+        "200":
+          description: Token response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TokenEnvelope"
+  /open-api/v1/submit-task:
+    post:
+      operationId: submitTask
+      summary: Submit a 3D generation task
+      description: |
+        Creates an asynchronous image-to-3D, multi-view-to-3D, or staged texture task.
+        Hitem3D expects multipart/form-data and returns a task_id that can be polled
+        with the query-task endpoint.
+      tags: [tasks]
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              $ref: "#/components/schemas/SubmitTaskRequest"
+      responses:
+        "200":
+          description: Task submitted
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SubmitTaskEnvelope"
+  /open-api/v1/query-task:
+    get:
+      operationId: queryTask
+      summary: Query a task
+      tags: [tasks]
+      parameters:
+        - name: task_id
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Task state and result URLs
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TaskEnvelope"
+  /open-api/v1/balance:
+    get:
+      operationId: getBalance
+      summary: Query account balance
+      tags: [account]
+      responses:
+        "200":
+          description: Current account balance
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BalanceEnvelope"
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+  schemas:
+    ApiEnvelope:
+      type: object
+      properties:
+        code:
+          type: integer
+        msg:
+          type: string
+        message:
+          type: string
+    TokenEnvelope:
+      allOf:
+        - $ref: "#/components/schemas/ApiEnvelope"
+        - type: object
+          properties:
+            data:
+              $ref: "#/components/schemas/TokenData"
+    TokenData:
+      type: object
+      properties:
+        accessToken:
+          type: string
+        tokenType:
+          type: string
+        nonce:
+          type: string
+    SubmitTaskRequest:
+      type: object
+      properties:
+        request_type:
+          type: integer
+          description: "1: geometry only, 2: texture an existing mesh, 3: geometry plus texture."
+          enum: [1, 2, 3]
+        model:
+          type: string
+          description: Hitem3D model version, such as hitem3dv2.1 or scene-portraitv2.1.
+        images:
+          type: string
+          format: binary
+          description: Single image input for image-to-3D.
+        multi_images:
+          type: string
+          format: binary
+          description: Repeat this multipart field for multi-view image input.
+        multi_images_bit:
+          type: string
+          description: Four-character bitmap indicating which multi-view images were supplied.
+        resolution:
+          type: string
+          description: Output resolution, such as 512, 1024, 1536, 1536pro, 1536fast, or 1536profast.
+        mesh_url:
+          type: string
+          description: Existing GLB mesh URL used for staged texture generation.
+        mesh:
+          type: string
+          format: binary
+          description: Existing GLB mesh upload used for staged texture generation.
+        pbr:
+          type: integer
+          description: "PBR texture toggle. 0 disables PBR, 1 enables PBR."
+          enum: [0, 1]
+        face:
+          type: integer
+          description: Target face count.
+        format:
+          type: integer
+          description: "Output format. 1 obj, 2 glb, 3 stl, 4 fbx, 5 usdz."
+          enum: [1, 2, 3, 4, 5]
+        callback_url:
+          type: string
+          format: uri
+    SubmitTaskEnvelope:
+      allOf:
+        - $ref: "#/components/schemas/ApiEnvelope"
+        - type: object
+          properties:
+            data:
+              type: object
+              properties:
+                task_id:
+                  type: string
+    TaskEnvelope:
+      allOf:
+        - $ref: "#/components/schemas/ApiEnvelope"
+        - type: object
+          properties:
+            data:
+              $ref: "#/components/schemas/TaskData"
+    TaskData:
+      type: object
+      properties:
+        task_id:
+          type: string
+        state:
+          type: string
+          enum: [created, queueing, processing, success, failed]
+        id:
+          type: string
+        cover_url:
+          type: string
+          format: uri
+        url:
+          type: string
+          format: uri
+    BalanceEnvelope:
+      allOf:
+        - $ref: "#/components/schemas/ApiEnvelope"
+        - type: object
+          properties:
+            data:
+              type: object
+              properties:
+                totalBalance:
+                  type: number
+                  format: double
