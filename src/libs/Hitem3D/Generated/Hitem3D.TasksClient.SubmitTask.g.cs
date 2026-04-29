@@ -124,20 +124,48 @@ namespace Hitem3D
                             {
 
                                 __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent($"{request.RequestType}"),
+                                    content: new global::System.Net.Http.StringContent(global::System.Convert.ToString(request.RequestType, global::System.Globalization.CultureInfo.InvariantCulture) ?? string.Empty),
                                     name: "\"request_type\"");
                             } 
                             if (request.Model != default)
                             {
 
                                 __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent($"{request.Model}"),
+                                    content: new global::System.Net.Http.StringContent(request.Model ?? string.Empty),
                                     name: "\"model\"");
                             } 
                             if (request.Images != default)
                             {
 
                                 var __contentImages = new global::System.Net.Http.ByteArrayContent(request.Images ?? global::System.Array.Empty<byte>());
+                                __contentImages.Headers.ContentType = new global::System.Net.Http.Headers.MediaTypeHeaderValue(
+                                    request.Imagesname is null
+                                        ? "application/octet-stream"
+                                        : (global::System.IO.Path.GetExtension(request.Imagesname) ?? string.Empty).ToLowerInvariant() switch
+                                        {
+                                            ".aac" => "audio/aac",
+                                            ".flac" => "audio/flac",
+                                            ".gif" => "image/gif",
+                                            ".jpeg" => "image/jpeg",
+                                            ".jpg" => "image/jpeg",
+                                            ".json" => "application/json",
+                                            ".m4a" => "audio/mp4",
+                                            ".mp3" => "audio/mpeg",
+                                            ".mp4" => "video/mp4",
+                                            ".mpeg" => "audio/mpeg",
+                                            ".mpga" => "audio/mpeg",
+                                            ".oga" => "audio/ogg",
+                                            ".ogg" => "audio/ogg",
+                                            ".opus" => "audio/ogg",
+                                            ".pdf" => "application/pdf",
+                                            ".png" => "image/png",
+                                            ".txt" => "text/plain",
+                                            ".wav" => "audio/wav",
+                                            ".weba" => "audio/webm",
+                                            ".webm" => "video/webm",
+                                            ".webp" => "image/webp",
+                                            _ => "application/octet-stream",
+                                        });
                                 __httpRequestContent.Add(
                                     content: __contentImages,
                                     name: "\"images\"",
@@ -151,6 +179,34 @@ namespace Hitem3D
                             {
 
                                 var __contentMultiImages = new global::System.Net.Http.ByteArrayContent(request.MultiImages ?? global::System.Array.Empty<byte>());
+                                __contentMultiImages.Headers.ContentType = new global::System.Net.Http.Headers.MediaTypeHeaderValue(
+                                    request.MultiImagesname is null
+                                        ? "application/octet-stream"
+                                        : (global::System.IO.Path.GetExtension(request.MultiImagesname) ?? string.Empty).ToLowerInvariant() switch
+                                        {
+                                            ".aac" => "audio/aac",
+                                            ".flac" => "audio/flac",
+                                            ".gif" => "image/gif",
+                                            ".jpeg" => "image/jpeg",
+                                            ".jpg" => "image/jpeg",
+                                            ".json" => "application/json",
+                                            ".m4a" => "audio/mp4",
+                                            ".mp3" => "audio/mpeg",
+                                            ".mp4" => "video/mp4",
+                                            ".mpeg" => "audio/mpeg",
+                                            ".mpga" => "audio/mpeg",
+                                            ".oga" => "audio/ogg",
+                                            ".ogg" => "audio/ogg",
+                                            ".opus" => "audio/ogg",
+                                            ".pdf" => "application/pdf",
+                                            ".png" => "image/png",
+                                            ".txt" => "text/plain",
+                                            ".wav" => "audio/wav",
+                                            ".weba" => "audio/webm",
+                                            ".webm" => "video/webm",
+                                            ".webp" => "image/webp",
+                                            _ => "application/octet-stream",
+                                        });
                                 __httpRequestContent.Add(
                                     content: __contentMultiImages,
                                     name: "\"multi_images\"",
@@ -164,27 +220,55 @@ namespace Hitem3D
                             {
 
                                 __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent($"{request.MultiImagesBit}"),
+                                    content: new global::System.Net.Http.StringContent(request.MultiImagesBit ?? string.Empty),
                                     name: "\"multi_images_bit\"");
                             } 
                             if (request.Resolution != default)
                             {
 
                                 __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent($"{request.Resolution}"),
+                                    content: new global::System.Net.Http.StringContent(request.Resolution ?? string.Empty),
                                     name: "\"resolution\"");
                             } 
                             if (request.MeshUrl != default)
                             {
 
                                 __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent($"{request.MeshUrl}"),
+                                    content: new global::System.Net.Http.StringContent(request.MeshUrl ?? string.Empty),
                                     name: "\"mesh_url\"");
                             } 
                             if (request.Mesh != default)
                             {
 
                                 var __contentMesh = new global::System.Net.Http.ByteArrayContent(request.Mesh ?? global::System.Array.Empty<byte>());
+                                __contentMesh.Headers.ContentType = new global::System.Net.Http.Headers.MediaTypeHeaderValue(
+                                    request.Meshname is null
+                                        ? "application/octet-stream"
+                                        : (global::System.IO.Path.GetExtension(request.Meshname) ?? string.Empty).ToLowerInvariant() switch
+                                        {
+                                            ".aac" => "audio/aac",
+                                            ".flac" => "audio/flac",
+                                            ".gif" => "image/gif",
+                                            ".jpeg" => "image/jpeg",
+                                            ".jpg" => "image/jpeg",
+                                            ".json" => "application/json",
+                                            ".m4a" => "audio/mp4",
+                                            ".mp3" => "audio/mpeg",
+                                            ".mp4" => "video/mp4",
+                                            ".mpeg" => "audio/mpeg",
+                                            ".mpga" => "audio/mpeg",
+                                            ".oga" => "audio/ogg",
+                                            ".ogg" => "audio/ogg",
+                                            ".opus" => "audio/ogg",
+                                            ".pdf" => "application/pdf",
+                                            ".png" => "image/png",
+                                            ".txt" => "text/plain",
+                                            ".wav" => "audio/wav",
+                                            ".weba" => "audio/webm",
+                                            ".webm" => "video/webm",
+                                            ".webp" => "image/webp",
+                                            _ => "application/octet-stream",
+                                        });
                                 __httpRequestContent.Add(
                                     content: __contentMesh,
                                     name: "\"mesh\"",
@@ -198,28 +282,28 @@ namespace Hitem3D
                             {
 
                                 __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent($"{request.Pbr}"),
+                                    content: new global::System.Net.Http.StringContent(global::System.Convert.ToString(request.Pbr, global::System.Globalization.CultureInfo.InvariantCulture) ?? string.Empty),
                                     name: "\"pbr\"");
                             } 
                             if (request.Face != default)
                             {
 
                                 __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent($"{request.Face}"),
+                                    content: new global::System.Net.Http.StringContent(global::System.Convert.ToString(request.Face, global::System.Globalization.CultureInfo.InvariantCulture) ?? string.Empty),
                                     name: "\"face\"");
                             } 
                             if (request.Format != default)
                             {
 
                                 __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent($"{request.Format}"),
+                                    content: new global::System.Net.Http.StringContent(global::System.Convert.ToString(request.Format, global::System.Globalization.CultureInfo.InvariantCulture) ?? string.Empty),
                                     name: "\"format\"");
                             } 
                             if (request.CallbackUrl != default)
                             {
 
                                 __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent($"{request.CallbackUrl}"),
+                                    content: new global::System.Net.Http.StringContent(request.CallbackUrl ?? string.Empty),
                                     name: "\"callback_url\"");
                             }
                             __httpRequest.Content = __httpRequestContent;
