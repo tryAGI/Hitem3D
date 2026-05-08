@@ -29,6 +29,19 @@ namespace Hitem3D
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickApi(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Hitem3D.ApiEnvelope? value)
+        {
+            value = Api;
+            return IsApi;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Hitem3D.TaskEnvelopeVariant2? TaskEnvelopeVariant2 { get; init; }
 #else
@@ -42,6 +55,19 @@ namespace Hitem3D
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(TaskEnvelopeVariant2))]
 #endif
         public bool IsTaskEnvelopeVariant2 => TaskEnvelopeVariant2 != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickTaskEnvelopeVariant2(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Hitem3D.TaskEnvelopeVariant2? value)
+        {
+            value = TaskEnvelopeVariant2;
+            return IsTaskEnvelopeVariant2;
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -118,8 +144,8 @@ namespace Hitem3D
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Hitem3D.ApiEnvelope?, TResult>? api = null,
-            global::System.Func<global::Hitem3D.TaskEnvelopeVariant2?, TResult>? taskEnvelopeVariant2 = null,
+            global::System.Func<global::Hitem3D.ApiEnvelope, TResult>? api = null,
+            global::System.Func<global::Hitem3D.TaskEnvelopeVariant2, TResult>? taskEnvelopeVariant2 = null,
             bool validate = true)
         {
             if (validate)
@@ -143,8 +169,32 @@ namespace Hitem3D
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::Hitem3D.ApiEnvelope?>? api = null,
-            global::System.Action<global::Hitem3D.TaskEnvelopeVariant2?>? taskEnvelopeVariant2 = null,
+            global::System.Action<global::Hitem3D.ApiEnvelope>? api = null,
+
+            global::System.Action<global::Hitem3D.TaskEnvelopeVariant2>? taskEnvelopeVariant2 = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsApi)
+            {
+                api?.Invoke(Api!);
+            }
+            else if (IsTaskEnvelopeVariant2)
+            {
+                taskEnvelopeVariant2?.Invoke(TaskEnvelopeVariant2!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::Hitem3D.ApiEnvelope>? api = null,
+            global::System.Action<global::Hitem3D.TaskEnvelopeVariant2>? taskEnvelopeVariant2 = null,
             bool validate = true)
         {
             if (validate)
