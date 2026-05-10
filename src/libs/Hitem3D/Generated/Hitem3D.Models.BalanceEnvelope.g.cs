@@ -42,6 +42,13 @@ namespace Hitem3D
         /// <summary>
         /// 
         /// </summary>
+        public global::Hitem3D.ApiEnvelope PickApi() => IsApi
+            ? Api!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Api' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Hitem3D.BalanceEnvelopeVariant2? BalanceEnvelopeVariant2 { get; init; }
 #else
@@ -68,6 +75,13 @@ namespace Hitem3D
             value = BalanceEnvelopeVariant2;
             return IsBalanceEnvelopeVariant2;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Hitem3D.BalanceEnvelopeVariant2 PickBalanceEnvelopeVariant2() => IsBalanceEnvelopeVariant2
+            ? BalanceEnvelopeVariant2!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'BalanceEnvelopeVariant2' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
@@ -89,6 +103,11 @@ namespace Hitem3D
         /// <summary>
         /// 
         /// </summary>
+        public static BalanceEnvelope FromApi(global::Hitem3D.ApiEnvelope? value) => new BalanceEnvelope(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator BalanceEnvelope(global::Hitem3D.BalanceEnvelopeVariant2 value) => new BalanceEnvelope((global::Hitem3D.BalanceEnvelopeVariant2?)value);
 
         /// <summary>
@@ -103,6 +122,11 @@ namespace Hitem3D
         {
             BalanceEnvelopeVariant2 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static BalanceEnvelope FromBalanceEnvelopeVariant2(global::Hitem3D.BalanceEnvelopeVariant2? value) => new BalanceEnvelope(value);
 
         /// <summary>
         /// 
