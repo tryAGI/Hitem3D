@@ -86,6 +86,7 @@ namespace Hitem3D.JsonConverters
             {
                 try
                 {
+
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Hitem3D.ApiEnvelope), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Hitem3D.ApiEnvelope> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Hitem3D.ApiEnvelope).Name}");
                     api = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
@@ -96,9 +97,13 @@ namespace Hitem3D.JsonConverters
                 catch (global::System.InvalidOperationException)
                 {
                 }
+            }
 
+            if (api == null && balanceEnvelopeVariant2 == null)
+            {
                 try
                 {
+
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Hitem3D.BalanceEnvelopeVariant2), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Hitem3D.BalanceEnvelopeVariant2> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Hitem3D.BalanceEnvelopeVariant2).Name}");
                     balanceEnvelopeVariant2 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
