@@ -42,6 +42,13 @@ namespace Hitem3D
         /// <summary>
         /// 
         /// </summary>
+        public global::Hitem3D.ApiEnvelope PickApi() => IsApi
+            ? Api!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Api' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Hitem3D.SubmitTaskEnvelopeVariant2? SubmitTaskEnvelopeVariant2 { get; init; }
 #else
@@ -68,6 +75,13 @@ namespace Hitem3D
             value = SubmitTaskEnvelopeVariant2;
             return IsSubmitTaskEnvelopeVariant2;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Hitem3D.SubmitTaskEnvelopeVariant2 PickSubmitTaskEnvelopeVariant2() => IsSubmitTaskEnvelopeVariant2
+            ? SubmitTaskEnvelopeVariant2!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'SubmitTaskEnvelopeVariant2' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
@@ -89,6 +103,11 @@ namespace Hitem3D
         /// <summary>
         /// 
         /// </summary>
+        public static SubmitTaskEnvelope FromApi(global::Hitem3D.ApiEnvelope? value) => new SubmitTaskEnvelope(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator SubmitTaskEnvelope(global::Hitem3D.SubmitTaskEnvelopeVariant2 value) => new SubmitTaskEnvelope((global::Hitem3D.SubmitTaskEnvelopeVariant2?)value);
 
         /// <summary>
@@ -103,6 +122,11 @@ namespace Hitem3D
         {
             SubmitTaskEnvelopeVariant2 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static SubmitTaskEnvelope FromSubmitTaskEnvelopeVariant2(global::Hitem3D.SubmitTaskEnvelopeVariant2? value) => new SubmitTaskEnvelope(value);
 
         /// <summary>
         /// 

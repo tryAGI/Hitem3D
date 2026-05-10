@@ -42,6 +42,13 @@ namespace Hitem3D
         /// <summary>
         /// 
         /// </summary>
+        public global::Hitem3D.ApiEnvelope PickApi() => IsApi
+            ? Api!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Api' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Hitem3D.TaskEnvelopeVariant2? TaskEnvelopeVariant2 { get; init; }
 #else
@@ -68,6 +75,13 @@ namespace Hitem3D
             value = TaskEnvelopeVariant2;
             return IsTaskEnvelopeVariant2;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Hitem3D.TaskEnvelopeVariant2 PickTaskEnvelopeVariant2() => IsTaskEnvelopeVariant2
+            ? TaskEnvelopeVariant2!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'TaskEnvelopeVariant2' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
@@ -89,6 +103,11 @@ namespace Hitem3D
         /// <summary>
         /// 
         /// </summary>
+        public static TaskEnvelope FromApi(global::Hitem3D.ApiEnvelope? value) => new TaskEnvelope(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator TaskEnvelope(global::Hitem3D.TaskEnvelopeVariant2 value) => new TaskEnvelope((global::Hitem3D.TaskEnvelopeVariant2?)value);
 
         /// <summary>
@@ -103,6 +122,11 @@ namespace Hitem3D
         {
             TaskEnvelopeVariant2 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static TaskEnvelope FromTaskEnvelopeVariant2(global::Hitem3D.TaskEnvelopeVariant2? value) => new TaskEnvelope(value);
 
         /// <summary>
         /// 
