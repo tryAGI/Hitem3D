@@ -86,6 +86,7 @@ namespace Hitem3D.JsonConverters
             {
                 try
                 {
+
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Hitem3D.ApiEnvelope), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Hitem3D.ApiEnvelope> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Hitem3D.ApiEnvelope).Name}");
                     api = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
@@ -96,9 +97,13 @@ namespace Hitem3D.JsonConverters
                 catch (global::System.InvalidOperationException)
                 {
                 }
+            }
 
+            if (api == null && submitTaskEnvelopeVariant2 == null)
+            {
                 try
                 {
+
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Hitem3D.SubmitTaskEnvelopeVariant2), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Hitem3D.SubmitTaskEnvelopeVariant2> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Hitem3D.SubmitTaskEnvelopeVariant2).Name}");
                     submitTaskEnvelopeVariant2 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
