@@ -53,6 +53,26 @@ namespace Hitem3D
             global::Hitem3D.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
+            var __response = await QueryTaskAsResponseAsync(
+                taskId: taskId,
+                requestOptions: requestOptions,
+                cancellationToken: cancellationToken
+            ).ConfigureAwait(false);
+
+            return __response.Body;
+        }
+        /// <summary>
+        /// Query a task
+        /// </summary>
+        /// <param name="taskId"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::Hitem3D.ApiException"></exception>
+        public async global::System.Threading.Tasks.Task<global::Hitem3D.AutoSDKHttpResponse<global::Hitem3D.TaskEnvelope>> QueryTaskAsResponseAsync(
+            string taskId,
+            global::Hitem3D.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default)
+        {
             PrepareArguments(
                 client: HttpClient);
             PrepareQueryTaskArguments(
@@ -81,11 +101,12 @@ namespace Hitem3D
 
             global::System.Net.Http.HttpRequestMessage __CreateHttpRequest()
             {
+
                             var __pathBuilder = new global::Hitem3D.PathBuilder(
                                 path: "/open-api/v1/query-task",
-                                baseUri: HttpClient.BaseAddress); 
+                                baseUri: HttpClient.BaseAddress);
                             __pathBuilder
-                                .AddRequiredParameter("task_id", taskId) 
+                                .AddRequiredParameter("task_id", taskId)
                                 ;
                             var __path = __pathBuilder.ToString();
                 __path = global::Hitem3D.AutoSDKRequestOptionsSupport.AppendQueryParameters(
@@ -157,6 +178,8 @@ namespace Hitem3D
                                 attempt: __attempt,
                                 maxAttempts: __maxAttempts,
                                 willRetry: false,
+                                retryDelay: null,
+                                retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                     try
                     {
@@ -167,6 +190,11 @@ namespace Hitem3D
                     }
                     catch (global::System.Net.Http.HttpRequestException __exception)
                     {
+                        var __retryDelay = global::Hitem3D.AutoSDKRequestOptionsSupport.GetRetryDelay(
+                            clientOptions: Options,
+                            requestOptions: requestOptions,
+                            response: null,
+                            attempt: __attempt);
                         var __willRetry = __attempt < __maxAttempts && !__effectiveCancellationToken.IsCancellationRequested;
                         await global::Hitem3D.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
@@ -184,6 +212,8 @@ namespace Hitem3D
                                 attempt: __attempt,
                                 maxAttempts: __maxAttempts,
                                 willRetry: __willRetry,
+                                retryDelay: __willRetry ? __retryDelay : (global::System.TimeSpan?)null,
+                                retryReason: "exception",
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                         if (!__willRetry)
                         {
@@ -193,8 +223,7 @@ namespace Hitem3D
                         __httpRequest.Dispose();
                         __httpRequest = null;
                         await global::Hitem3D.AutoSDKRequestOptionsSupport.DelayBeforeRetryAsync(
-                            clientOptions: Options,
-                            requestOptions: requestOptions,
+                            retryDelay: __retryDelay,
                             cancellationToken: __effectiveCancellationToken).ConfigureAwait(false);
                         continue;
                     }
@@ -203,6 +232,11 @@ namespace Hitem3D
                         __attempt < __maxAttempts &&
                         global::Hitem3D.AutoSDKRequestOptionsSupport.ShouldRetryStatusCode(__response.StatusCode))
                     {
+                        var __retryDelay = global::Hitem3D.AutoSDKRequestOptionsSupport.GetRetryDelay(
+                            clientOptions: Options,
+                            requestOptions: requestOptions,
+                            response: __response,
+                            attempt: __attempt);
                         await global::Hitem3D.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Hitem3D.AutoSDKRequestOptionsSupport.CreateHookContext(
@@ -219,14 +253,15 @@ namespace Hitem3D
                                 attempt: __attempt,
                                 maxAttempts: __maxAttempts,
                                 willRetry: true,
+                                retryDelay: __retryDelay,
+                                retryReason: "status:" + ((int)__response.StatusCode).ToString(global::System.Globalization.CultureInfo.InvariantCulture),
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                         __response.Dispose();
                         __response = null;
                         __httpRequest.Dispose();
                         __httpRequest = null;
                         await global::Hitem3D.AutoSDKRequestOptionsSupport.DelayBeforeRetryAsync(
-                            clientOptions: Options,
-                            requestOptions: requestOptions,
+                            retryDelay: __retryDelay,
                             cancellationToken: __effectiveCancellationToken).ConfigureAwait(false);
                         continue;
                     }
@@ -266,6 +301,8 @@ namespace Hitem3D
                                 attempt: __attemptNumber,
                                 maxAttempts: __maxAttempts,
                                 willRetry: false,
+                                retryDelay: null,
+                                retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                 }
                 else
@@ -286,6 +323,8 @@ namespace Hitem3D
                                 attempt: __attemptNumber,
                                 maxAttempts: __maxAttempts,
                                 willRetry: false,
+                                retryDelay: null,
+                                retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                 }
 
@@ -310,9 +349,13 @@ namespace Hitem3D
                                 {
                                     __response.EnsureSuccessStatusCode();
 
-                                    return
-                                        global::Hitem3D.TaskEnvelope.FromJson(__content, JsonSerializerContext) ??
+                                    var __value = global::Hitem3D.TaskEnvelope.FromJson(__content, JsonSerializerContext) ??
                                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
+                                    return new global::Hitem3D.AutoSDKHttpResponse<global::Hitem3D.TaskEnvelope>(
+                                        statusCode: __response.StatusCode,
+                                        headers: global::Hitem3D.AutoSDKHttpResponse.CreateHeaders(__response),
+                                        requestUri: __response.RequestMessage?.RequestUri,
+                                        body: __value);
                                 }
                                 catch (global::System.Exception __ex)
                                 {
@@ -340,9 +383,13 @@ namespace Hitem3D
                 #endif
                                     ).ConfigureAwait(false);
 
-                                    return
-                                        await global::Hitem3D.TaskEnvelope.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                                    var __value = await global::Hitem3D.TaskEnvelope.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                                         throw new global::System.InvalidOperationException("Response deserialization failed.");
+                                    return new global::Hitem3D.AutoSDKHttpResponse<global::Hitem3D.TaskEnvelope>(
+                                        statusCode: __response.StatusCode,
+                                        headers: global::Hitem3D.AutoSDKHttpResponse.CreateHeaders(__response),
+                                        requestUri: __response.RequestMessage?.RequestUri,
+                                        body: __value);
                                 }
                                 catch (global::System.Exception __ex)
                                 {

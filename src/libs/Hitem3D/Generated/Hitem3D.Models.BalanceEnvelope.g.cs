@@ -29,6 +29,26 @@ namespace Hitem3D
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickApi(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Hitem3D.ApiEnvelope? value)
+        {
+            value = Api;
+            return IsApi;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Hitem3D.ApiEnvelope PickApi() => IsApi
+            ? Api!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Api' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::Hitem3D.BalanceEnvelopeVariant2? BalanceEnvelopeVariant2 { get; init; }
 #else
@@ -42,6 +62,26 @@ namespace Hitem3D
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(BalanceEnvelopeVariant2))]
 #endif
         public bool IsBalanceEnvelopeVariant2 => BalanceEnvelopeVariant2 != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickBalanceEnvelopeVariant2(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::Hitem3D.BalanceEnvelopeVariant2? value)
+        {
+            value = BalanceEnvelopeVariant2;
+            return IsBalanceEnvelopeVariant2;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Hitem3D.BalanceEnvelopeVariant2 PickBalanceEnvelopeVariant2() => IsBalanceEnvelopeVariant2
+            ? BalanceEnvelopeVariant2!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'BalanceEnvelopeVariant2' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
@@ -63,6 +103,11 @@ namespace Hitem3D
         /// <summary>
         /// 
         /// </summary>
+        public static BalanceEnvelope FromApi(global::Hitem3D.ApiEnvelope? value) => new BalanceEnvelope(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator BalanceEnvelope(global::Hitem3D.BalanceEnvelopeVariant2 value) => new BalanceEnvelope((global::Hitem3D.BalanceEnvelopeVariant2?)value);
 
         /// <summary>
@@ -77,6 +122,11 @@ namespace Hitem3D
         {
             BalanceEnvelopeVariant2 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static BalanceEnvelope FromBalanceEnvelopeVariant2(global::Hitem3D.BalanceEnvelopeVariant2? value) => new BalanceEnvelope(value);
 
         /// <summary>
         /// 
@@ -118,8 +168,8 @@ namespace Hitem3D
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::Hitem3D.ApiEnvelope?, TResult>? api = null,
-            global::System.Func<global::Hitem3D.BalanceEnvelopeVariant2?, TResult>? balanceEnvelopeVariant2 = null,
+            global::System.Func<global::Hitem3D.ApiEnvelope, TResult>? api = null,
+            global::System.Func<global::Hitem3D.BalanceEnvelopeVariant2, TResult>? balanceEnvelopeVariant2 = null,
             bool validate = true)
         {
             if (validate)
@@ -143,8 +193,32 @@ namespace Hitem3D
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::Hitem3D.ApiEnvelope?>? api = null,
-            global::System.Action<global::Hitem3D.BalanceEnvelopeVariant2?>? balanceEnvelopeVariant2 = null,
+            global::System.Action<global::Hitem3D.ApiEnvelope>? api = null,
+
+            global::System.Action<global::Hitem3D.BalanceEnvelopeVariant2>? balanceEnvelopeVariant2 = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsApi)
+            {
+                api?.Invoke(Api!);
+            }
+            else if (IsBalanceEnvelopeVariant2)
+            {
+                balanceEnvelopeVariant2?.Invoke(BalanceEnvelopeVariant2!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::Hitem3D.ApiEnvelope>? api = null,
+            global::System.Action<global::Hitem3D.BalanceEnvelopeVariant2>? balanceEnvelopeVariant2 = null,
             bool validate = true)
         {
             if (validate)

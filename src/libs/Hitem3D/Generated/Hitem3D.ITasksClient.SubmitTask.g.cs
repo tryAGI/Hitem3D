@@ -25,6 +25,21 @@ namespace Hitem3D
         /// Hitem3D expects multipart/form-data and returns a task_id that can be polled<br/>
         /// with the query-task endpoint.
         /// </summary>
+        /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::Hitem3D.ApiException"></exception>
+        global::System.Threading.Tasks.Task<global::Hitem3D.AutoSDKHttpResponse<global::Hitem3D.SubmitTaskEnvelope>> SubmitTaskAsResponseAsync(
+
+            global::Hitem3D.SubmitTaskRequest request,
+            global::Hitem3D.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Submit a 3D generation task<br/>
+        /// Creates an asynchronous image-to-3D, multi-view-to-3D, or staged texture task.<br/>
+        /// Hitem3D expects multipart/form-data and returns a task_id that can be polled<br/>
+        /// with the query-task endpoint.
+        /// </summary>
         /// <param name="requestType">
         /// 1: geometry only, 2: texture an existing mesh, 3: geometry plus texture.
         /// </param>

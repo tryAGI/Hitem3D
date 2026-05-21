@@ -39,5 +39,6 @@ namespace Hitem3D
         public TaskEnvelopeVariant2()
         {
         }
+
     }
 }
