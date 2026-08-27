@@ -4,7 +4,7 @@
 namespace Hitem3D
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class SubmitTaskRequest
     {
@@ -93,7 +93,7 @@ namespace Hitem3D
         public int? Format { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("callback_url")]
         public string? CallbackUrl { get; set; }

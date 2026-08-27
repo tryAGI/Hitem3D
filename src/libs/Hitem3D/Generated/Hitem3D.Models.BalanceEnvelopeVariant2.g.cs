@@ -4,12 +4,12 @@
 namespace Hitem3D
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class BalanceEnvelopeVariant2
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("data")]
         public global::Hitem3D.BalanceEnvelopeVariant2Data? Data { get; set; }

@@ -4,24 +4,24 @@
 namespace Hitem3D
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class ApiEnvelope
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("code")]
         public int? Code { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("msg")]
         public string? Msg { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("message")]
         public string? Message { get; set; }

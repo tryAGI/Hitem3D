@@ -135,7 +135,7 @@ namespace Hitem3D
                          __authorization.Location == "Header")
                 {
                     __httpRequest.Headers.Add(__authorization.Name, __authorization.Value);
-                } 
+                }
             }
                 global::Hitem3D.AutoSDKRequestOptionsSupport.ApplyHeaders(
                     request: __httpRequest,

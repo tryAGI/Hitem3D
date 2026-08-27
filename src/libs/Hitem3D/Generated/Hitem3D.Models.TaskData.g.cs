@@ -4,37 +4,37 @@
 namespace Hitem3D
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class TaskData
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("task_id")]
         public string? TaskId { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("state")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Hitem3D.JsonConverters.TaskDataStateJsonConverter))]
         public global::Hitem3D.TaskDataState? State { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("id")]
         public string? Id { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("cover_url")]
         public string? CoverUrl { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("url")]
         public string? Url { get; set; }

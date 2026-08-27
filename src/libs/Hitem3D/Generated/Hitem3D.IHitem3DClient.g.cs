@@ -42,23 +42,23 @@ namespace Hitem3D
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         global::System.Text.Json.Serialization.JsonSerializerContext JsonSerializerContext { get; set; }
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public AccountClient Account { get; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public AuthClient Auth { get; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TasksClient Tasks { get; }
 

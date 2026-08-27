@@ -20,7 +20,7 @@ namespace Hitem3D.JsonConverters
                     {
                         return global::Hitem3D.TaskDataStateExtensions.ToEnum(stringValue);
                     }
-                    
+
                     break;
                 }
                 case global::System.Text.Json.JsonTokenType.Number:

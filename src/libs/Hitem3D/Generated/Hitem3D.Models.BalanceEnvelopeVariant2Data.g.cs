@@ -4,12 +4,12 @@
 namespace Hitem3D
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class BalanceEnvelopeVariant2Data
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("totalBalance")]
         public double? TotalBalance { get; set; }

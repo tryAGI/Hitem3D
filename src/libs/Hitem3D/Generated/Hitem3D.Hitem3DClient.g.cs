@@ -13,7 +13,7 @@ namespace Hitem3D
     public sealed partial class Hitem3DClient : global::Hitem3D.IHitem3DClient, global::System.IDisposable
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public const string DefaultBaseUrl = "https://api.hitem3d.ai/";
 
@@ -40,7 +40,7 @@ namespace Hitem3D
         internal global::System.Lazy<global::System.Text.Json.Serialization.JsonSerializerContext> JsonSerializerContextProvider { get; set; } = new(() => global::Hitem3D.SourceGenerationContext.Default);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::System.Text.Json.Serialization.JsonSerializerContext JsonSerializerContext
         {
@@ -50,7 +50,7 @@ namespace Hitem3D
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public AccountClient Account => new AccountClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
@@ -59,7 +59,7 @@ namespace Hitem3D
         };
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public AuthClient Auth => new AuthClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
@@ -68,7 +68,7 @@ namespace Hitem3D
         };
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TasksClient Tasks => new TasksClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
