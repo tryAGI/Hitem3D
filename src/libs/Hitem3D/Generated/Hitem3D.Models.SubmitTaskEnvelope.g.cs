@@ -5,12 +5,12 @@
 namespace Hitem3D
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public readonly partial struct SubmitTaskEnvelope : global::System.IEquatable<SubmitTaskEnvelope>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Hitem3D.ApiEnvelope? Api { get; init; }
@@ -19,7 +19,7 @@ namespace Hitem3D
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Api))]
@@ -27,7 +27,7 @@ namespace Hitem3D
         public bool IsApi => Api != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickApi(
 #if NET6_0_OR_GREATER
@@ -40,14 +40,14 @@ namespace Hitem3D
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Hitem3D.ApiEnvelope PickApi() => IsApi
             ? Api!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Api' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Hitem3D.SubmitTaskEnvelopeVariant2? SubmitTaskEnvelopeVariant2 { get; init; }
@@ -56,7 +56,7 @@ namespace Hitem3D
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(SubmitTaskEnvelopeVariant2))]
@@ -64,7 +64,7 @@ namespace Hitem3D
         public bool IsSubmitTaskEnvelopeVariant2 => SubmitTaskEnvelopeVariant2 != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickSubmitTaskEnvelopeVariant2(
 #if NET6_0_OR_GREATER
@@ -77,23 +77,23 @@ namespace Hitem3D
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Hitem3D.SubmitTaskEnvelopeVariant2 PickSubmitTaskEnvelopeVariant2() => IsSubmitTaskEnvelopeVariant2
             ? SubmitTaskEnvelopeVariant2!
             : throw new global::System.InvalidOperationException($"Expected union variant 'SubmitTaskEnvelopeVariant2' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator SubmitTaskEnvelope(global::Hitem3D.ApiEnvelope value) => new SubmitTaskEnvelope((global::Hitem3D.ApiEnvelope?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Hitem3D.ApiEnvelope?(SubmitTaskEnvelope @this) => @this.Api;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public SubmitTaskEnvelope(global::Hitem3D.ApiEnvelope? value)
         {
@@ -101,22 +101,22 @@ namespace Hitem3D
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static SubmitTaskEnvelope FromApi(global::Hitem3D.ApiEnvelope? value) => new SubmitTaskEnvelope(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator SubmitTaskEnvelope(global::Hitem3D.SubmitTaskEnvelopeVariant2 value) => new SubmitTaskEnvelope((global::Hitem3D.SubmitTaskEnvelopeVariant2?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Hitem3D.SubmitTaskEnvelopeVariant2?(SubmitTaskEnvelope @this) => @this.SubmitTaskEnvelopeVariant2;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public SubmitTaskEnvelope(global::Hitem3D.SubmitTaskEnvelopeVariant2? value)
         {
@@ -124,12 +124,12 @@ namespace Hitem3D
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static SubmitTaskEnvelope FromSubmitTaskEnvelopeVariant2(global::Hitem3D.SubmitTaskEnvelopeVariant2? value) => new SubmitTaskEnvelope(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public SubmitTaskEnvelope(
             global::Hitem3D.ApiEnvelope? api,
@@ -141,23 +141,23 @@ namespace Hitem3D
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             SubmitTaskEnvelopeVariant2 as object ??
-            Api as object 
+            Api as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             Api?.ToString() ??
-            SubmitTaskEnvelopeVariant2?.ToString() 
+            SubmitTaskEnvelopeVariant2?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -165,7 +165,7 @@ namespace Hitem3D
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::Hitem3D.ApiEnvelope, TResult>? api = null,
@@ -190,7 +190,7 @@ namespace Hitem3D
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::Hitem3D.ApiEnvelope>? api = null,
@@ -214,7 +214,7 @@ namespace Hitem3D
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::Hitem3D.ApiEnvelope>? api = null,
@@ -237,7 +237,7 @@ namespace Hitem3D
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -258,18 +258,18 @@ namespace Hitem3D
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(SubmitTaskEnvelope other)
         {
             return
                 global::System.Collections.Generic.EqualityComparer<global::Hitem3D.ApiEnvelope?>.Default.Equals(Api, other.Api) &&
-                global::System.Collections.Generic.EqualityComparer<global::Hitem3D.SubmitTaskEnvelopeVariant2?>.Default.Equals(SubmitTaskEnvelopeVariant2, other.SubmitTaskEnvelopeVariant2) 
+                global::System.Collections.Generic.EqualityComparer<global::Hitem3D.SubmitTaskEnvelopeVariant2?>.Default.Equals(SubmitTaskEnvelopeVariant2, other.SubmitTaskEnvelopeVariant2)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(SubmitTaskEnvelope obj1, SubmitTaskEnvelope obj2)
         {
@@ -277,7 +277,7 @@ namespace Hitem3D
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(SubmitTaskEnvelope obj1, SubmitTaskEnvelope obj2)
         {
@@ -285,7 +285,7 @@ namespace Hitem3D
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

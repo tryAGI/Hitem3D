@@ -4,7 +4,7 @@
 namespace Hitem3D
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class GetTokenRequest
     {

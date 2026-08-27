@@ -5,12 +5,12 @@
 namespace Hitem3D
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public readonly partial struct BalanceEnvelope : global::System.IEquatable<BalanceEnvelope>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Hitem3D.ApiEnvelope? Api { get; init; }
@@ -19,7 +19,7 @@ namespace Hitem3D
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Api))]
@@ -27,7 +27,7 @@ namespace Hitem3D
         public bool IsApi => Api != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickApi(
 #if NET6_0_OR_GREATER
@@ -40,14 +40,14 @@ namespace Hitem3D
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Hitem3D.ApiEnvelope PickApi() => IsApi
             ? Api!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Api' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::Hitem3D.BalanceEnvelopeVariant2? BalanceEnvelopeVariant2 { get; init; }
@@ -56,7 +56,7 @@ namespace Hitem3D
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(BalanceEnvelopeVariant2))]
@@ -64,7 +64,7 @@ namespace Hitem3D
         public bool IsBalanceEnvelopeVariant2 => BalanceEnvelopeVariant2 != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickBalanceEnvelopeVariant2(
 #if NET6_0_OR_GREATER
@@ -77,23 +77,23 @@ namespace Hitem3D
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::Hitem3D.BalanceEnvelopeVariant2 PickBalanceEnvelopeVariant2() => IsBalanceEnvelopeVariant2
             ? BalanceEnvelopeVariant2!
             : throw new global::System.InvalidOperationException($"Expected union variant 'BalanceEnvelopeVariant2' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator BalanceEnvelope(global::Hitem3D.ApiEnvelope value) => new BalanceEnvelope((global::Hitem3D.ApiEnvelope?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Hitem3D.ApiEnvelope?(BalanceEnvelope @this) => @this.Api;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public BalanceEnvelope(global::Hitem3D.ApiEnvelope? value)
         {
@@ -101,22 +101,22 @@ namespace Hitem3D
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static BalanceEnvelope FromApi(global::Hitem3D.ApiEnvelope? value) => new BalanceEnvelope(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator BalanceEnvelope(global::Hitem3D.BalanceEnvelopeVariant2 value) => new BalanceEnvelope((global::Hitem3D.BalanceEnvelopeVariant2?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::Hitem3D.BalanceEnvelopeVariant2?(BalanceEnvelope @this) => @this.BalanceEnvelopeVariant2;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public BalanceEnvelope(global::Hitem3D.BalanceEnvelopeVariant2? value)
         {
@@ -124,12 +124,12 @@ namespace Hitem3D
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static BalanceEnvelope FromBalanceEnvelopeVariant2(global::Hitem3D.BalanceEnvelopeVariant2? value) => new BalanceEnvelope(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public BalanceEnvelope(
             global::Hitem3D.ApiEnvelope? api,
@@ -141,23 +141,23 @@ namespace Hitem3D
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             BalanceEnvelopeVariant2 as object ??
-            Api as object 
+            Api as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             Api?.ToString() ??
-            BalanceEnvelopeVariant2?.ToString() 
+            BalanceEnvelopeVariant2?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -165,7 +165,7 @@ namespace Hitem3D
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::Hitem3D.ApiEnvelope, TResult>? api = null,
@@ -190,7 +190,7 @@ namespace Hitem3D
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::Hitem3D.ApiEnvelope>? api = null,
@@ -214,7 +214,7 @@ namespace Hitem3D
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::Hitem3D.ApiEnvelope>? api = null,
@@ -237,7 +237,7 @@ namespace Hitem3D
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -258,18 +258,18 @@ namespace Hitem3D
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(BalanceEnvelope other)
         {
             return
                 global::System.Collections.Generic.EqualityComparer<global::Hitem3D.ApiEnvelope?>.Default.Equals(Api, other.Api) &&
-                global::System.Collections.Generic.EqualityComparer<global::Hitem3D.BalanceEnvelopeVariant2?>.Default.Equals(BalanceEnvelopeVariant2, other.BalanceEnvelopeVariant2) 
+                global::System.Collections.Generic.EqualityComparer<global::Hitem3D.BalanceEnvelopeVariant2?>.Default.Equals(BalanceEnvelopeVariant2, other.BalanceEnvelopeVariant2)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(BalanceEnvelope obj1, BalanceEnvelope obj2)
         {
@@ -277,7 +277,7 @@ namespace Hitem3D
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(BalanceEnvelope obj1, BalanceEnvelope obj2)
         {
@@ -285,7 +285,7 @@ namespace Hitem3D
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {
