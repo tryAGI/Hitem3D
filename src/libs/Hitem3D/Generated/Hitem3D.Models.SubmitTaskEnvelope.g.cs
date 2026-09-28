@@ -42,8 +42,8 @@ namespace Hitem3D
         /// <summary>
         ///
         /// </summary>
-        public global::Hitem3D.ApiEnvelope PickApi() => IsApi
-            ? Api!
+        public global::Hitem3D.ApiEnvelope PickApi() => Api is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Api' but the value was {ToString()}.");
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace Hitem3D
         /// <summary>
         ///
         /// </summary>
-        public global::Hitem3D.SubmitTaskEnvelopeVariant2 PickSubmitTaskEnvelopeVariant2() => IsSubmitTaskEnvelopeVariant2
-            ? SubmitTaskEnvelopeVariant2!
+        public global::Hitem3D.SubmitTaskEnvelopeVariant2 PickSubmitTaskEnvelopeVariant2() => SubmitTaskEnvelopeVariant2 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'SubmitTaskEnvelopeVariant2' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -177,13 +177,13 @@ namespace Hitem3D
                 Validate();
             }
 
-            if (IsApi && api != null)
+            if (Api is { } __value0 && api != null)
             {
-                return api(Api!);
+                return api(__value0);
             }
-            else if (IsSubmitTaskEnvelopeVariant2 && submitTaskEnvelopeVariant2 != null)
+            else if (SubmitTaskEnvelopeVariant2 is { } __value1 && submitTaskEnvelopeVariant2 != null)
             {
-                return submitTaskEnvelopeVariant2(SubmitTaskEnvelopeVariant2!);
+                return submitTaskEnvelopeVariant2(__value1);
             }
 
             return default(TResult);
@@ -203,13 +203,13 @@ namespace Hitem3D
                 Validate();
             }
 
-            if (IsApi)
+            if (Api is { } __value0)
             {
-                api?.Invoke(Api!);
+                api?.Invoke(__value0);
             }
-            else if (IsSubmitTaskEnvelopeVariant2)
+            else if (SubmitTaskEnvelopeVariant2 is { } __value1)
             {
-                submitTaskEnvelopeVariant2?.Invoke(SubmitTaskEnvelopeVariant2!);
+                submitTaskEnvelopeVariant2?.Invoke(__value1);
             }
         }
 
@@ -226,13 +226,13 @@ namespace Hitem3D
                 Validate();
             }
 
-            if (IsApi)
+            if (Api is { } __value0)
             {
-                api?.Invoke(Api!);
+                api?.Invoke(__value0);
             }
-            else if (IsSubmitTaskEnvelopeVariant2)
+            else if (SubmitTaskEnvelopeVariant2 is { } __value1)
             {
-                submitTaskEnvelopeVariant2?.Invoke(SubmitTaskEnvelopeVariant2!);
+                submitTaskEnvelopeVariant2?.Invoke(__value1);
             }
         }
 
