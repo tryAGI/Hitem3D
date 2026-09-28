@@ -70,7 +70,7 @@ namespace Hitem3D.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Hitem3D.ApiEnvelope), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Hitem3D.ApiEnvelope?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Hitem3D.ApiEnvelope).Name}");
-                var __element0 = global::System.Text.Json.JsonSerializer.SerializeToElement(value.Api!, typeInfo);
+                var __element0 = global::System.Text.Json.JsonSerializer.SerializeToElement(value.PickApi(), typeInfo);
                 if (__element0.ValueKind != global::System.Text.Json.JsonValueKind.Object)
                 {
                     throw new global::System.Text.Json.JsonException("AllOf values must serialize as JSON objects.");
@@ -88,7 +88,7 @@ namespace Hitem3D.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::Hitem3D.TaskEnvelopeVariant2), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::Hitem3D.TaskEnvelopeVariant2?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::Hitem3D.TaskEnvelopeVariant2).Name}");
-                var __element1 = global::System.Text.Json.JsonSerializer.SerializeToElement(value.TaskEnvelopeVariant2!, typeInfo);
+                var __element1 = global::System.Text.Json.JsonSerializer.SerializeToElement(value.PickTaskEnvelopeVariant2(), typeInfo);
                 if (__element1.ValueKind != global::System.Text.Json.JsonValueKind.Object)
                 {
                     throw new global::System.Text.Json.JsonException("AllOf values must serialize as JSON objects.");
